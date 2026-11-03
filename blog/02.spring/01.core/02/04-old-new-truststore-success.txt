@@ -1,0 +1,14 @@
+Evidence captured: 2026-11-03T16:40:02+08:00
+Command: docker exec vk-cert-old java -Djavax.net.ssl.trustStore=/tmp/vk-cert-check/new-jdk-cacerts -cp /tmp/vk-cert-check CheckVkHttps https://id.vk.com/
+Exit code: 0
+
+--- stdout ---
+java.version=1.8.0_211
+java.vendor=Oracle Corporation
+java.home=/usr/java/jdk1.8.0_211-amd64/jre
+target=https://id.vk.com/
+TLS certificate and hostname verification: OK
+HTTP status=302
+Location=https://id.vk.com/promo
+
+--- stderr ---

@@ -1,0 +1,46 @@
+Evidence captured: 2026-11-03T16:39:58+08:00
+Command: docker exec vk-cert-old java -cp /tmp/vk-cert-check CheckVkHttps https://id.vk.com/
+Exit code: 1
+
+--- stdout ---
+java.version=1.8.0_211
+java.vendor=Oracle Corporation
+java.home=/usr/java/jdk1.8.0_211-amd64/jre
+target=https://id.vk.com/
+
+--- stderr ---
+Exception in thread "main" javax.net.ssl.SSLHandshakeException: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.ssl.Alerts.getSSLException(Alerts.java:192)
+	at sun.security.ssl.SSLSocketImpl.fatal(SSLSocketImpl.java:1946)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:316)
+	at sun.security.ssl.Handshaker.fatalSE(Handshaker.java:310)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1639)
+	at sun.security.ssl.ClientHandshaker.processMessage(ClientHandshaker.java:223)
+	at sun.security.ssl.Handshaker.processLoop(Handshaker.java:1037)
+	at sun.security.ssl.Handshaker.process_record(Handshaker.java:965)
+	at sun.security.ssl.SSLSocketImpl.readRecord(SSLSocketImpl.java:1064)
+	at sun.security.ssl.SSLSocketImpl.performInitialHandshake(SSLSocketImpl.java:1367)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1395)
+	at sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:1379)
+	at sun.net.www.protocol.https.HttpsClient.afterConnect(HttpsClient.java:559)
+	at sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:185)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1564)
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1492)
+	at java.net.HttpURLConnection.getResponseCode(HttpURLConnection.java:480)
+	at sun.net.www.protocol.https.HttpsURLConnectionImpl.getResponseCode(HttpsURLConnectionImpl.java:347)
+	at CheckVkHttps.main(CheckVkHttps.java:16)
+Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:397)
+	at sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:302)
+	at sun.security.validator.Validator.validate(Validator.java:262)
+	at sun.security.ssl.X509TrustManagerImpl.validate(X509TrustManagerImpl.java:330)
+	at sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:237)
+	at sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132)
+	at sun.security.ssl.ClientHandshaker.serverCertificate(ClientHandshaker.java:1621)
+	... 14 more
+Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+	at sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:141)
+	at sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:126)
+	at java.security.cert.CertPathBuilder.build(CertPathBuilder.java:280)
+	at sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:392)
+	... 20 more
